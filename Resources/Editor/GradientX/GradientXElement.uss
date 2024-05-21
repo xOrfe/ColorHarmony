@@ -1,0 +1,82 @@
+.gradientx-element {
+    background-color: rgb(0, 0, 0);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.gradient-single {
+    height: 100px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    justify-content: space-between;
+    background-image: resource('GradientRenderTexture');
+}
+
+.key-container {
+    flex-grow: 0.3;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    align-self: stretch;
+    background-color: rgb(41, 41, 41);
+}
+
+.enum-space {
+    background-color: rgba(0, 0, 0, 0);
+    flex-direction: row;
+    justify-content: center;
+    align-self: stretch;
+}
+
+.key {
+    background-color: rgb(255, 255, 255);
+    width: 12px;
+    height: 18px;
+    translate: -5px 0;
+    flex-direction: row;
+    position: absolute;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+}
+
+.key:hover {
+    width: 12px;
+    height: 24px;
+    translate: -5px 0;
+    flex-direction: row;
+    position: absolute;
+}
+
+.key:focus {
+    width: 8px;
+    height: 30px;
+    translate: -5px 0;
+    flex-direction: row;
+    position: absolute;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+}

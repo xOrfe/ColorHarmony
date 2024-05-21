@@ -1,0 +1,110 @@
+.colour-wheel {
+    flex-grow: 0;
+    background-color: rgb(103, 103, 103);
+    width: 340px;
+    height: 340px;
+    align-items: center;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-top-width: 10px;
+    border-bottom-width: 10px;
+    border-top-left-radius: 1000px;
+    border-bottom-left-radius: 1000px;
+    border-top-right-radius: 1000px;
+    border-bottom-right-radius: 1000px;
+    border-left-color: rgb(154, 154, 154);
+    border-right-color: rgb(154, 154, 154);
+    border-top-color: rgb(154, 154, 154);
+    border-bottom-color: rgb(154, 154, 154);
+    -unity-slice-left: 0;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    padding-left: 0;
+    -unity-slice-top: 0;
+    -unity-slice-right: 0;
+    -unity-slice-bottom: 0;
+    -unity-background-scale-mode: stretch-to-fill;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    align-self: center;
+    min-width: 256px;
+    max-width: 512px;
+    max-height: 512px;
+    min-height: 256px;
+    transform-origin: center;
+    justify-content: center;
+    scale: 1 1;
+    rotate: 0;
+    position: relative;
+}
+
+WheelPointElement.colour-wheel-point {
+    height: 36px;
+    width: 36px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    opacity: 1;
+    translate: 0 0;
+    max-width: initial;
+    max-height: initial;
+    min-height: initial;
+    min-width: initial;
+    flex-direction: column;
+    background-color: rgb(135, 135, 135);
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    transform-origin: left;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-image: url('project://database/Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/d_loading@2x.png?fileID=2800000&guid=7ee48c5fba4919649a8a6094cbead669&type=3#d_loading@2x');
+    -unity-slice-left: 0;
+    -unity-slice-top: 0;
+    -unity-slice-right: 0;
+    -unity-slice-bottom: 0;
+}
+
+.exposed-color {
+    background-color: rgb(176, 72, 72);
+    width: 50px;
+    height: 60px;
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.TypeEnum {
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    justify-content: flex-start;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.color-point-def-foldout {
+    background-color: rgb(36, 36, 36);
+}

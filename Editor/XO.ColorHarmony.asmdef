@@ -1,0 +1,16 @@
+{
+    "name": "XO.ColorHarmony",
+    "rootNamespace": "",
+    "references": [
+        "GUID:a7f2d360cb530574f979091b3a46ebe0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/XO/Color%20Harmony/Resources/Editor/GradientX/GradientX.uss?fileID=7433441132597879392&amp;guid=b6879e41c26fcc24b98a53fe56f4b85b&amp;type=3#GradientX" />
+    <Style src="project://database/Assets/XO/Color%20Harmony/Resources/Editor/GradientX/GradientXElement.uss?fileID=7433441132597879392&amp;guid=209cfe23866f5804989d1d7a9b7118a5&amp;type=3#GradientXElement" />
+    <ui:VisualElement name="GradientContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+    <ui:VisualElement name="Buttons" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center;">
+        <ui:Button text="AddGradient" display-tooltip-when-elided="true" name="AddGradientButton" />
+        <ui:Button text="RemoveGradient" display-tooltip-when-elided="true" name="RemoveGradientButton" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Inputs" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+</ui:UXML>

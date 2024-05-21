@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement name="ColorKeyField" style="flex-grow: 1; background-color: rgb(38, 38, 38); border-top-left-radius: 13px; border-bottom-left-radius: 13px; border-top-right-radius: 13px; border-bottom-right-radius: 13px; margin-left: 15px; margin-right: 15px; margin-top: 15px; margin-bottom: 15px; align-items: center; align-self: center; width: 330px; height: 100px; visibility: visible; display: flex;">
+        <ui:Label tabindex="-1" text="Color Key" display-tooltip-when-elided="true" name="ColorKeyText" />
+        <uie:ColorField label="Color" value="RGBA(0.000, 1.000, 1.000, 1.000)" name="Color" style="flex-direction: column;" />
+        <ui:VisualElement name="Down" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: center; justify-content: space-around;">
+            <ui:Slider picking-mode="Ignore" label="Brightness" value="0" high-value="8" name="Brightness" show-input-field="true" inverted="false" direction="Horizontal" low-value="-8" style="min-width: initial; width: 45%; flex-direction: column;" />
+            <ui:Slider picking-mode="Ignore" label="Position" value="0.5" high-value="1" name="Position" show-input-field="true" inverted="false" direction="Horizontal" style="min-width: initial; width: 45%; flex-direction: column;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

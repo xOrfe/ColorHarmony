@@ -1,0 +1,73 @@
+#pragma kernel CSMain
+
+#define TWO_PI 6.28318530718
+
+RWTexture2D<float4> Result;
+
+
+float xorfeMod(float x, float y)
+{
+    return x - y * floor(x/y);
+}
+
+float3 hsb2rgb(float3 c ){
+    float3 rgb = clamp( abs(fmod(c.x*6.0+float3(0.0,4.0,2.0),6.0)-3.0)-1.0, 0, 1);
+    rgb = rgb*rgb*(3.0-2.0*rgb);
+    return c.z * lerp( float3(1,1,1), rgb, c.y);
+}
+
+float3 RgbToHsv(float3 c)
+{
+    const float4 K = float4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+    float4 p = lerp(float4(c.bg, K.wz), float4(c.gb, K.xy), step(c.b, c.g));
+    float4 q = lerp(float4(p.xyw, c.r), float4(c.r, p.yzx), step(p.x, c.r));
+    float d = q.x - min(q.w, q.y);
+    const float e = 1.0e-4;
+    return float3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+}
+
+float3 HsvToRgb(float3 c)
+{
+    const float4 K = float4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+    float3 p = abs(frac(c.xxx + K.xyz) * 6.0 - K.www);
+    return c.z * lerp(K.xxx, saturate(p - K.xxx), c.y);
+}
+
+float quadraticBezier (float x, float2 a) {
+    float epsilon = .00001;
+    a.x = clamp(a.x, 0., 1.); 
+    a.y = clamp(a.y, 0., 1.); 
+    if (a.x == .5) {
+        a += epsilon;
+    }
+    
+    float om2a = 1. - 2. * a.x;
+    float t = (sqrt(a.x * a.x + om2a * x) - a.x) / om2a;
+    float y = (1. - 2. * a.y) * (t * t) + (2. * a.y) * t;
+    return y;
+}
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    float alpha = 1.;
+    
+    float2 st = float2((float) id.x / 256 , (float) id.y / 256);
+
+    float2 c = float2(.5,.5) - st;
+    float angle = atan2(c.y, c.x) / TWO_PI + .5;
+    float l = length(c);
+    float radius = l * 2.;
+    
+    st = float2(angle, radius);
+    
+    st.x = quadraticBezier(st.x, float2(.5, .5));
+
+    float brightness = 1.0;
+    float3 color = HsvToRgb(float3(st.x, st.y, brightness));
+
+    // circle mask
+    // color = clamp(color + smoothstep(.9875, 1.0, st.y) * 2., 0., 1.);
+    
+    Result[id.xy] = float4(color,alpha);
+}

@@ -1,0 +1,41 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/XO/Color%20Harmony/Resources/Editor/ColorWheel/ColourWheel.uss?fileID=7433441132597879392&amp;guid=21e28a1485d658d4296e51da98555980&amp;type=3#ColourWheel" />
+    <ui:Foldout text="Colour Wheel" name="Root" value="true" focusable="false" style="align-items: stretch; align-self: stretch; background-color: rgb(55, 55, 55); background-image: none;">
+        <ui:VisualElement name="Top" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-between; align-items: stretch; align-self: center; flex-direction: row; flex-wrap: nowrap; margin-left: 0; background-image: none;">
+            <ui:TextField picking-mode="Ignore" label="Wheel Name" value="New Wheel" name="WheelName" style="flex-direction: column;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Top" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-between; align-items: stretch; align-self: center; flex-direction: row; flex-wrap: nowrap; margin-left: 0;">
+            <ui:EnumField label="Harmony" type="XO.ColorHarmony.HarmonyType, XO.ColorHarmony" name="HarmonyType" focusable="false" class="TypeEnum" />
+            <ui:EnumField label="Wheel" type="XO.ColorHarmony.WheelType, XO.ColorHarmony" name="WheelType" class="TypeEnum" />
+            <ui:Button display-tooltip-when-elided="true" name="LockButton" focusable="true" style="border-top-left-radius: 100px; border-bottom-left-radius: 100px; border-top-right-radius: 100px; border-bottom-right-radius: 100px; -unity-background-scale-mode: stretch-to-fill; background-color: rgb(115, 115, 115); background-image: resource(&apos;Visuals/locked&apos;); width: 50px; height: 50px; margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="ColourWheel" focusable="false" class="colour-wheel" style="border-top-left-radius: 1000px; border-top-right-radius: 1000px; border-bottom-left-radius: 1000px; border-bottom-right-radius: 1000px; border-left-color: rgb(166, 166, 166); border-right-color: rgb(166, 166, 166); border-top-color: rgb(166, 166, 166); border-bottom-color: rgb(166, 166, 166); background-image: resource(&apos;Wheel&apos;); width: 340px; height: 340px;">
+            <ui:VisualElement name="WheelPointContainer" style="left: 170px; top: 170px; position: absolute; transform-origin: center; translate: 0 0;" />
+            <ui:Slider picking-mode="Ignore" label="Brightness" high-value="1" inverted="false" show-input-field="true" direction="Vertical" value="0.8" name="Brightness" style="width: 40px; height: 340px; left: 220px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="DownButtons" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); margin-left: 15px; margin-right: 15px; margin-top: 15px; margin-bottom: 0; flex-direction: row; flex-wrap: nowrap; justify-content: center;">
+            <ui:Button text="Add Point" display-tooltip-when-elided="true" name="AddPoint" style="height: 30px; width: 100px; align-items: center; justify-content: flex-end; align-self: center;" />
+            <ui:Button text="Remove Point" display-tooltip-when-elided="true" name="RemovePoint" style="width: 100px; height: 30px; align-self: center; align-items: center; justify-content: flex-end;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Down" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); height: auto; width: auto; flex-direction: row; flex-wrap: nowrap; flex-basis: auto; flex-shrink: 1; align-self: auto; justify-content: center; align-items: center; margin-top: 25px; margin-bottom: 25px; position: relative;">
+            <ui:Button display-tooltip-when-elided="true" name="ExposedColor0" class="exposed-color" />
+            <ui:Button display-tooltip-when-elided="true" name="ExposedColor1" class="exposed-color" />
+            <ui:Button display-tooltip-when-elided="true" name="ExposedColor2" class="exposed-color" />
+            <ui:Button display-tooltip-when-elided="true" name="ExposedColor3" class="exposed-color" />
+            <ui:Button display-tooltip-when-elided="true" name="ExposedColor4" class="exposed-color" />
+            <ui:Button display-tooltip-when-elided="true" name="ExposedColor5" class="exposed-color" style="visibility: visible; display: flex;" />
+            <ui:Button display-tooltip-when-elided="true" name="ExposedColor6" class="exposed-color" />
+            <ui:Button display-tooltip-when-elided="true" name="ExposedColor7" class="exposed-color" style="display: flex;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="WheelPointDefContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+            <ui:Foldout text="Color 0" name="WheelPointDef0" class="color-point-def-foldout" />
+            <ui:Foldout text="Color 1" name="WheelPointDef1" class="color-point-def-foldout" />
+            <ui:Foldout text="Color 2" name="WheelPointDef2" class="color-point-def-foldout" />
+            <ui:Foldout text="Color 3" name="WheelPointDef3" class="color-point-def-foldout" />
+            <ui:Foldout text="Color 4" name="WheelPointDef4" class="color-point-def-foldout" />
+            <ui:Foldout text="Color 5" name="WheelPointDef5" class="color-point-def-foldout" />
+            <ui:Foldout text="Color 6" name="WheelPointDef6" class="color-point-def-foldout" />
+            <ui:Foldout text="Color 7" name="WheelPointDef7" class="color-point-def-foldout" />
+        </ui:VisualElement>
+    </ui:Foldout>
+</ui:UXML>
