@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 60b74fbdc3c954e48b294a7919556aed
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_ViewDataDictionary: {instanceID: 0}
+  - gradientXMain: {fileID: 9197481963319205126, guid: f9ce7fc2f90436141a766971ecf96a70, type: 3}
+  - colorKeyField: {fileID: 9197481963319205126, guid: d5b1ca2edaf460a44a17b9842f0d665a, type: 3}
+  - alphaKeyField: {fileID: 9197481963319205126, guid: 0456878f460318244a724758f02c55e5, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
