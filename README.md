@@ -42,16 +42,6 @@ I list the tags you can use below:
   ├── package.json
   ├── README.md
   ├── Editor
-  │   └── ColorWheel
-  │       └── ColourWheel.cs
-  │       └── ColourWheelDrawer.cs
-  │       └── WheelPointDefinition.cs
-  │       └── ColourWheelEditorWindow.cs
-  │       └── WheelPointPropertyDrawer.cs
-  │   └── GradientX
-  │       └── GradientXElement.cs
-  │       └── GradientXEditorWındow.cs
-  ├── Runtime
   │   └── ColorX.cs
   │   └── ColorSpaceType.cs
   │   └── ColorWheel
@@ -61,6 +51,11 @@ I list the tags you can use below:
   │       └── WheelPointElement.cs
   │       └── WheelTextureProvider.cs
   │       └── ColourHarmonySettings.cs
+  │       └── ColourWheel.cs
+  │       └── ColourWheelDrawer.cs
+  │       └── WheelPointDefinition.cs
+  │       └── ColourWheelEditorWindow.cs
+  │       └── WheelPointPropertyDrawer.cs
   │   └── GradientX
   │       └── AlphaKey.cs
   │       └── ColorKey.cs
@@ -70,6 +65,7 @@ I list the tags you can use below:
   │       └── IGradientKey.cs
   │       └── GradientSampler.cs
   │       └── KeyContainerElement.cs
+  │       └── GradientXEditorWındow.cs
   │       └── GradientXDataScriptable.cs
   │   └── Shaders
   │     └── ColorConversions.hlsl
