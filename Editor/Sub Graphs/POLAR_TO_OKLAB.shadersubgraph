@@ -177,6 +177,7 @@
     "m_OutputNode": {
         "m_Id": "04a27e1837f64f1193ea586136c97a4d"
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": []
 }
 
@@ -393,7 +394,8 @@
     },
     "m_SourceType": 0,
     "m_FunctionName": "polar_to_oklab",
-    "m_FunctionSource": "8981f1f911c14813ae4fb579a46c9a5d",
+    "m_FunctionSource": "cc55f44a2f4af2f42af20858d534962b",
+    "m_FunctionSourceUsePragmas": true,
     "m_FunctionBody": "Enter function body here..."
 }
 

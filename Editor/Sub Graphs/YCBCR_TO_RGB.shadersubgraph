@@ -177,6 +177,7 @@
     "m_OutputNode": {
         "m_Id": "04a27e1837f64f1193ea586136c97a4d"
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": []
 }
 
@@ -368,7 +369,7 @@
             "serializedVersion": "2",
             "x": -128.0,
             "y": -69.0,
-            "width": 227.0,
+            "width": 228.0,
             "height": 278.0
         }
     },
@@ -393,7 +394,8 @@
     },
     "m_SourceType": 0,
     "m_FunctionName": "ycbcr_to_rgb",
-    "m_FunctionSource": "8f3453d4f1e9463085341d0f68ab0952",
+    "m_FunctionSource": "cc55f44a2f4af2f42af20858d534962b",
+    "m_FunctionSourceUsePragmas": true,
     "m_FunctionBody": "Enter function body here..."
 }
 

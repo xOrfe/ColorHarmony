@@ -7,6 +7,8 @@
  * http://www.chilliant.com/rgb2hsv.html
  * https://www.fourcc.org/fccyvrgb.php
  
+*/
+
 
 #include "Conversions/RGB_TO_XYZ.hlsl"
 #include "Conversions/XYZ_TO_RGB.hlsl"
@@ -50,7 +52,7 @@
 #include "Conversions/RGB_TO_SRGB_FAST.hlsl"
 #include "Conversions/SRGB_TO_RGB_FAST.hlsl"
 
-*/
+
 
 
 #endif

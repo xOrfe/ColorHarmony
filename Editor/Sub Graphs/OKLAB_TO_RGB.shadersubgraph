@@ -177,6 +177,7 @@
     "m_OutputNode": {
         "m_Id": "ff795044cc2949f98633b701db046aaa"
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": []
 }
 
@@ -770,7 +771,8 @@
     },
     "m_SourceType": 0,
     "m_FunctionName": "oklab_to_rgb",
-    "m_FunctionSource": "4c9b61ae457d4e1bbae3086a5cab65d8",
+    "m_FunctionSource": "cc55f44a2f4af2f42af20858d534962b",
+    "m_FunctionSourceUsePragmas": true,
     "m_FunctionBody": "Enter function body here..."
 }
 
