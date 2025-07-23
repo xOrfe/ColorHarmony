@@ -22,10 +22,12 @@ Use at your own risk (but with love)! 💖
 
 ## 🌟 Screenshots from the Dream World
 
-![GradientX](https://raw.githubusercontent.com/xOrfe/ColorHarmony/main/Images/GradientX.png)  
+![GradientX](https://raw.githubusercontent.com/xOrfe/ColorHarmony/main/Images/GradientX.png)
+
 *~ Taste the rainbow inside your shader graph ~*
 
-![ColorWheel](https://raw.githubusercontent.com/xOrfe/ColorHarmony/main/Images/ColorWheel.png)  
+![ColorWheel](https://raw.githubusercontent.com/xOrfe/ColorHarmony/main/Images/ColorWheel.png)
+
 *~ Spin the wheel of color fate ~*
 
 ---
@@ -45,12 +47,14 @@ To use the ✨ GradientX ✨ system in Shader Graph:
 
 ![EditorGUI](https://raw.githubusercontent.com/xOrfe/ColorHarmony/main/Images/CustomEditorGUI.png)
 
+
 ### 🏷️ Magical Tags You Can Use:
 - `[Gradient]` → Add delicious gradient sampling (Texture2D only 🍬)  
 - `[ToggleFoldout]`, `[sub]`, `[sub2]`, ... `[subN]` → Create cozy nested foldouts 🧺  
 Perfect for making your editor GUI feel like a warm blanket on a rainy day~ ☔
 
 ![Tags](https://raw.githubusercontent.com/xOrfe/ColorHarmony/main/Images/EditorGUITags.png)
+
 
 ---
 
