@@ -1,66 +1,77 @@
-````md
-# 🌈💖 Color Harmony 💖🌈  
-> A magical color playground for Unity — full of gradients, rainbows, unicorns and love~ 🦄🎨✨
-
-Bored of boring colors? Want more ✨ harmony ✨ in your shader graphs and scripts?  
-Color Harmony is here to bless your Unity project with **26 dazzling color space converters**, glowing gradients, and a fabulous color wheel~ 💅🌸
+# 🎨 Color Harmony  
+> ✨ A magical color playground for Unity ✨  
+> 26 color space converters, vibrant gradients, and a whole lot of uwu~ 💖
 
 ---
 
-## ✨ What's Inside?
+## 🌟 Overview
 
-🧪 This enchanting package includes:  
-- **26 color space transformation spells** (both HLSL + Shader Graph) 🧙‍♂️  
-- **C# converters** for YCbCr and OKLab (more coming soon~ I pawmise! 🐾)  
-- **Custom Editor GUIs** to decorate your shader graphs like magical gardens 🌻  
-- **Color Wheel system** for vibrant, customizable harmony visuals 🎡  
+Color Harmony brings ✨color space transformations✨, cute utilities, and custom editors to your Unity projects.
 
-⚠️ Still a baby dragon 🐉 (early stage)! Some utilities that require strongly typed switch cases are still hibernating.  
-Use at your own risk (but with love)! 💖
+Inside, you'll find:
+- 🔁 26 color space converters (HLSL + Shader Graph)
+- 🧠 YCbCr and OKLab CPU converters (more coming!)
+- 🌈 Custom Editor GUI for Shader Graph
+- 🎡 Interactive Color Wheel
+- 💎 GradientX system for glowing gradients
+
+⚠️ Still in early development — some features may sparkle unexpectedly 🌠  
+Use, fork, remix... but use with love (and caution)! 💕
 
 ---
 
-## 🌟 Screenshots from the Dream World
+## 📸 Previews
+
+**GradientX — beautiful gradient editing right inside Unity!**
 
 ![GradientX](https://raw.githubusercontent.com/xOrfe/ColorHarmony/main/Images/GradientX.png)
 
-*~ Taste the rainbow inside your shader graph ~*
+**Color Wheel — for harmony and color balance wizards 🔮**
 
 ![ColorWheel](https://raw.githubusercontent.com/xOrfe/ColorHarmony/main/Images/ColorWheel.png)
 
-*~ Spin the wheel of color fate ~*
+---
+
+## 🚀 Getting Started
+
+> ✅ Tested with **Unity 2022.3.29f1**  
+> ✅ Requires **URP 14+** (or newer with Shader Graph support)
 
 ---
 
-## 🧙‍♀️ How to Use?
+### 🎡 Using the Color Wheel
 
-> ✨ *Tested with Unity 2022.3.29f1, URP 14+ is recommended for best sparkle power* ✨
-
-### 🎡 Color Wheel
 1. Create a `ColourWheel` object in your script.
-2. Tweak settings via the Unity Inspector for instant harmony magic 🌼
-
-### 🧁 Custom Editor GUI + GradientX  
-To use the ✨ GradientX ✨ system in Shader Graph:
-1. Set **Custom Editor GUI** on your Shader Graph to `Harmonica`  
-2. Watch it transform like a glittery chameleon~ 💫
-
-![EditorGUI](https://raw.githubusercontent.com/xOrfe/ColorHarmony/main/Images/CustomEditorGUI.png)
-
-
-### 🏷️ Magical Tags You Can Use:
-- `[Gradient]` → Add delicious gradient sampling (Texture2D only 🍬)  
-- `[ToggleFoldout]`, `[sub]`, `[sub2]`, ... `[subN]` → Create cozy nested foldouts 🧺  
-Perfect for making your editor GUI feel like a warm blanket on a rainy day~ ☔
-
-![Tags](https://raw.githubusercontent.com/xOrfe/ColorHarmony/main/Images/EditorGUITags.png)
-
+2. Tweak it through the Unity Inspector.
+3. Achieve perfect chromatic harmony uwu~ ✨
 
 ---
 
-## 📁 Package Structure
+### 🌈 Using GradientX in Shader Graph
 
-Here's a peek into the treasure chest 🎁:
+1. Open your Shader Graph.
+2. In the Graph Inspector, set `Custom Editor GUI` to `Harmonica`.
+
+That's it! GradientX will now take over with its own custom editor.
+
+![CustomEditorGUI](https://raw.githubusercontent.com/xOrfe/ColorHarmony/main/Images/CustomEditorGUI.png)
+
+---
+
+### 🏷️ Supported Tags for Shader Graph
+
+You can add the following tags to your shader graph properties:
+
+- `[Gradient]` → Gradient Texture2D sampler 🎨  
+- `[ToggleFoldout]`, `[sub]`, `[sub2]`, … → Nested foldouts 💫
+
+![EditorGUITags](https://raw.githubusercontent.com/xOrfe/ColorHarmony/main/Images/EditorGUITags.png)
+
+---
+
+## 📁 Project Structure
+
+A quick peek into the rainbow-colored codebase:
 
 ```none
 <root>
@@ -69,61 +80,34 @@ Here's a peek into the treasure chest 🎁:
   ├── Editor
   │   ├── ColorX.cs
   │   ├── ColorSpaceType.cs
-  │   ├── ColorWheel
-  │   │   ├── WheelType.cs
-  │   │   ├── HarmonyType.cs
-  │   │   ├── WheelUtilities.cs
-  │   │   ├── WheelPointElement.cs
-  │   │   ├── WheelTextureProvider.cs
-  │   │   ├── ColourHarmonySettings.cs
-  │   │   ├── ColourWheel.cs
-  │   │   ├── ColourWheelDrawer.cs
-  │   │   ├── WheelPointDefinition.cs
-  │   │   ├── ColourWheelEditorWindow.cs
-  │   │   ├── WheelPointPropertyDrawer.cs
-  │   ├── GradientX
-  │   │   ├── AlphaKey.cs
-  │   │   ├── ColorKey.cs
-  │   │   ├── GradientX.cs
-  │   │   ├── KeyElement.cs
-  │   │   ├── GradientType.cs
-  │   │   ├── IGradientKey.cs
-  │   │   ├── GradientSampler.cs
-  │   │   ├── KeyContainerElement.cs
-  │   │   ├── GradientXEditorWındow.cs
-  │   │   ├── GradientXDataScriptable.cs
-  │   ├── Shaders
-  │   │   ├── ColorConversions.hlsl
-  │   │   ├── GetLuminance.hlsl
-  │   │   ├── LinearGradientSampler.shader
-  │   │   └── Conversions
-  │   │       └── /** 26 magical color space scripts **/
-  │   ├── Sub Graphs
-  │       └── /** Shader Graph nodes for every conversion **/
-  ├── Resources
-  ├── Samples
-  │   └── SampleExample.cs
+  │   ├── ColorWheel/
+  │   │   ├── ColourWheel.cs, Drawer, EditorWindow, etc.
+  │   ├── GradientX/
+  │   │   ├── GradientX.cs, Keys, EditorWindow, etc.
+  │   ├── Shaders/
+  │   │   ├── 26 HLSL conversion files
+  │   ├── Sub Graphs/
+  │   │   ├── 26 Shader Graph nodes
+  ├── Resources/
+  ├── Samples/
+  │   ├── SampleExample.cs
 ````
 
 ---
 
-## 💌 Final Words
+## 💌 Final Notes
 
-🌟 Fork it, break it, remix it, sparkle it!
-This package is for color lovers, shader nerds, and dreamers\~
-More updates and C# color spells will arrive when the stars align ✨
+Feel free to:
 
-> Stay magical, stay colorful\~
-> Made with ♥ by xOrfe
+* 🌟 Fork the project
+* 🎮 Experiment with the color tools
+* ✨ Create magical shader setups
 
----
+C# converters for all 26 spaces are on the roadmap 💪
+Stay tuned, and stay colorful\~ 🌸
 
-🦄🌈💖 *color harmony is love. color harmony is life.* 💖🌈🦄
-
-```
+> Made with 💖 by [xOrfe](https://github.com/xOrfe)
 
 ---
 
-İstersen bu dosyayı `README.md` olarak dışa aktarılmış şekilde de gönderebilirim.  
-Bir sonraki adımda bunu Unity paketinle birleştirebiliriz ya da sana özel bir logo bile tasarlayabiliriz! İster misin? 🌟
-```
+🦄🌈 *Color Harmony is love. Color Harmony is life.* 🌈🦄
