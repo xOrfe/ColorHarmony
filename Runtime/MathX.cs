@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace XO
+namespace XO.ColorHarmony
 {
     public static class MathX
     {

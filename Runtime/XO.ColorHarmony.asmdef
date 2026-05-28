@@ -1,13 +1,8 @@
 {
-    "name": "XO.ColorHarmony.Editor",
+    "name": "XO.ColorHarmony",
     "rootNamespace": "XO.ColorHarmony",
-    "references": [
-        "GUID:9b7f43b23f3042f5a1f7a1a7f2a6d41c",
-        "GUID:a7f2d360cb530574f979091b3a46ebe0"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "references": [],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
