@@ -12,7 +12,6 @@ namespace XO.ColorHarmony
         public GradientXDataScriptable()
         {
             Gradients = new List<GradientXData>();
-            
         }
     }
 

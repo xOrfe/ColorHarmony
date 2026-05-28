@@ -8,14 +8,14 @@ public class KeyContainerElement<T> : VisualElement where T : IGradientKey, new(
 {
     public List<KeyElement<T>> keys;
     
-    private GradientXEditorWındow _window;
+    private GradientXEditorWindow _window;
     
     private bool _isKeySelected;
     private int _selectedKey;
     
     public Action ReSampleCall;
 
-    public KeyContainerElement(GradientXEditorWındow window)
+    public KeyContainerElement(GradientXEditorWindow window)
     {
         _window = window;
         keys = new List<KeyElement<T>>();

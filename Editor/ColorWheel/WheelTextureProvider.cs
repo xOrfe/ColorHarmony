@@ -15,7 +15,7 @@ namespace XO.ColorHarmony
                     standardWheelCompute.SetTexture(0,"Result",renderTexture);
                     standardWheelCompute.Dispatch(0, renderTexture.width / 8 , renderTexture.height / 8 , 1);
                     break;
-                case WheelType.C:
+                case WheelType.Oklch:
                     standardWheelCompute.SetTexture(0,"Result",renderTexture);
                     standardWheelCompute.Dispatch(0, renderTexture.width / 8 , renderTexture.height / 8 , 1);
                     break;

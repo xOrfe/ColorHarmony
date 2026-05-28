@@ -15,7 +15,7 @@ namespace XO.ColorHarmony
 
         private StyleSheet _styleSheet;
 
-        private GradientXEditorWındow _editorWindow;
+        private GradientXEditorWindow _editorWindow;
 
         private VisualElement _gradientMain;
 
@@ -35,7 +35,7 @@ namespace XO.ColorHarmony
             GradientType = gradientType;
             _gradientTypeField.value = GradientType;
         }
-        public GradientXElement(GradientXEditorWındow window)
+        public GradientXElement(GradientXEditorWindow window)
         {
             _editorWindow = window;
 

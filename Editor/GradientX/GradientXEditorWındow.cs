@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.UIElements;
@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 namespace XO.ColorHarmony
 {
-    public class GradientXEditorWındow : EditorWindow
+    public class GradientXEditorWindow : EditorWindow
     {
         [SerializeField] private VisualTreeAsset gradientXMain = default;
         [SerializeField] private VisualTreeAsset colorKeyField = default;
@@ -25,6 +25,8 @@ namespace XO.ColorHarmony
         private static Material _targetMaterial;
         private static string _targetPropertyName;
         private static string _targetPropertyReferenceName;
+        private static UnityEngine.Object _targetObject;
+        private static string _targetPropertyPath;
 
         public static int _gradientLength;
         private static bool _isExposed;
@@ -39,10 +41,30 @@ namespace XO.ColorHarmony
             _targetMaterial = targetMaterial;
             _targetPropertyName = targetPropertyName;
             _targetPropertyReferenceName = targetPropertyOnlyName;
+            _targetObject = null;
+            _targetPropertyPath = null;
 
             _gradientLength = 512;
 
-            GradientXEditorWındow wnd = GetWindow<GradientXEditorWındow>();
+            GradientXEditorWindow wnd = GetWindow<GradientXEditorWindow>();
+            wnd.titleContent = new GUIContent("GradientX");
+            wnd.maxSize = new Vector2(720f, 1440f);
+            wnd.minSize = new Vector2(400f, 450f);
+        }
+
+        public static void ExposeWindow(UnityEngine.Object targetObject, string targetPropertyPath)
+        {
+            if (_isExposed) return;
+            _isExposed = true;
+            _targetMaterial = null;
+            _targetPropertyName = targetPropertyPath;
+            _targetPropertyReferenceName = null;
+            _targetObject = targetObject;
+            _targetPropertyPath = targetPropertyPath;
+
+            _gradientLength = 512;
+
+            GradientXEditorWindow wnd = GetWindow<GradientXEditorWindow>();
             wnd.titleContent = new GUIContent("GradientX");
             wnd.maxSize = new Vector2(720f, 1440f);
             wnd.minSize = new Vector2(400f, 450f);
@@ -50,10 +72,11 @@ namespace XO.ColorHarmony
 
         public void CreateGUI()
         {
-            if (_targetMaterial == null)
+            if (_targetMaterial == null && _targetObject == null)
             {
                 _doNotSave = true;
                 this.Close();
+                return;
             }
 
             _root = rootVisualElement;
@@ -87,7 +110,8 @@ namespace XO.ColorHarmony
         {
             if (_targetMaterial == null)
             {
-                Debug.LogError("Cannot found material.");
+                SaveGradientXData();
+                _drawCall = false;
                 return;
             }
 
@@ -222,45 +246,120 @@ namespace XO.ColorHarmony
 
         private void CopyGradientXData()
         {
+            if (_targetObject != null)
+            {
+                CopySerializedGradientXData();
+                return;
+            }
+
             var gradientXDataScriptable = LoadGradientXDataScriptable();
             _gradients = new List<GradientXElement>();
 
             if (gradientXDataScriptable.Gradients.Count == 0)
+            {
                 gradientXDataScriptable.Gradients.Add(new GradientXData());
-            else
-                foreach (var gradientXData in gradientXDataScriptable.Gradients)
-                {
-                    GradientXElement element = new GradientXElement(this);
-                    element.SetColorSpace(gradientXData.ColorSpaceType);
-                    element.SetGradientType(gradientXData.GradientType);
-                    foreach (var alphaKeyData in gradientXData.AlphaKeys)
-                    {
-                        var alphaKey = element.AlphaKeys.AddKey(alphaKeyData.Time);
-                        alphaKey.KeyValue.Time(alphaKeyData.Time);
-                        alphaKey.KeyValue.Alpha(alphaKeyData.Alpha);
-                        alphaKey.style.backgroundColor = new Color(1, 1, 1, alphaKeyData.Alpha);
-                    }
+            }
 
-                    foreach (var colorKeyData in gradientXData.ColorKeys)
-                    {
-                        var colorKey = element.ColorKeys.AddKey(colorKeyData.Time);
-                        colorKey.KeyValue.Color(colorKeyData.Color);
-                        colorKey.style.backgroundColor = colorKeyData.Color;
-                        colorKey.KeyValue.Brightness(colorKeyData.Brightness);
-                    }
-
-                    _gradients.Add(element);
-                    element.ReSample();
-
-                    _root.Q("GradientContainer").Add(_gradients[^1]);
-                }
+            foreach (var gradientXData in gradientXDataScriptable.Gradients)
+            {
+                AddGradientElement(gradientXData);
+            }
 
             _copyGradientXDataCall = false;
+        }
+
+        private void CopySerializedGradientXData()
+        {
+            _gradients = new List<GradientXElement>();
+
+            SerializedObject serializedObject = new SerializedObject(_targetObject);
+            SerializedProperty property = serializedObject.FindProperty(_targetPropertyPath);
+            if (property != null)
+            {
+                AddGradientElement(ReadGradientXData(property));
+            }
+
+            _copyGradientXDataCall = false;
+        }
+
+        private void AddGradientElement(GradientXData gradientXData)
+        {
+            GradientXElement element = new GradientXElement(this);
+            element.SetColorSpace(gradientXData.ColorSpaceType);
+            element.SetGradientType(gradientXData.GradientType);
+
+            foreach (var alphaKeyData in gradientXData.AlphaKeys)
+            {
+                var alphaKey = element.AlphaKeys.AddKey(alphaKeyData.Time);
+                alphaKey.KeyValue.Time(alphaKeyData.Time);
+                alphaKey.KeyValue.Alpha(alphaKeyData.Alpha);
+                alphaKey.style.backgroundColor = new Color(1, 1, 1, alphaKeyData.Alpha);
+            }
+
+            foreach (var colorKeyData in gradientXData.ColorKeys)
+            {
+                var colorKey = element.ColorKeys.AddKey(colorKeyData.Time);
+                colorKey.KeyValue.Color(colorKeyData.Color);
+                colorKey.style.backgroundColor = colorKeyData.Color;
+                colorKey.KeyValue.Brightness(colorKeyData.Brightness);
+            }
+
+            _gradients.Add(element);
+            element.ReSample();
+            _root.Q("GradientContainer").Add(_gradients[^1]);
+        }
+
+        private static GradientXData ReadGradientXData(SerializedProperty property)
+        {
+            SerializedProperty colorKeys = property.FindPropertyRelative("colorKeys");
+            SerializedProperty alphaKeys = property.FindPropertyRelative("alphaKeys");
+
+            List<ColorKeyData> colorKeyDatas = new List<ColorKeyData>();
+            for (int i = 0; i < colorKeys.arraySize; i++)
+            {
+                SerializedProperty key = colorKeys.GetArrayElementAtIndex(i);
+                colorKeyDatas.Add(new ColorKeyData(
+                    key.FindPropertyRelative("color").colorValue,
+                    key.FindPropertyRelative("brightness").floatValue,
+                    key.FindPropertyRelative("time").floatValue));
+            }
+
+            List<AlphaKeyData> alphaKeyDatas = new List<AlphaKeyData>();
+            for (int i = 0; i < alphaKeys.arraySize; i++)
+            {
+                SerializedProperty key = alphaKeys.GetArrayElementAtIndex(i);
+                alphaKeyDatas.Add(new AlphaKeyData(
+                    key.FindPropertyRelative("alpha").floatValue,
+                    key.FindPropertyRelative("time").floatValue));
+            }
+
+            if (colorKeyDatas.Count == 0)
+            {
+                colorKeyDatas.Add(new ColorKeyData(Color.black, 1f, 0f));
+                colorKeyDatas.Add(new ColorKeyData(Color.white, 1f, 1f));
+            }
+
+            if (alphaKeyDatas.Count == 0)
+            {
+                alphaKeyDatas.Add(new AlphaKeyData(1f, 0f));
+                alphaKeyDatas.Add(new AlphaKeyData(1f, 1f));
+            }
+
+            return new GradientXData(
+                alphaKeyDatas,
+                colorKeyDatas,
+                (ColorSpaceType)property.FindPropertyRelative("interpolationColorSpace").enumValueIndex,
+                (GradientType)property.FindPropertyRelative("gradientType").enumValueIndex);
         }
 
         private void SaveGradientXData()
         {
             if (_doNotSave) return;
+            if (_targetObject != null)
+            {
+                SaveSerializedGradientXData();
+                return;
+            }
             
             GradientXDataScriptable data = LoadGradientXDataScriptable();
             
@@ -290,6 +389,47 @@ namespace XO.ColorHarmony
 
             EditorUtility.SetDirty(data);
             AssetDatabase.SaveAssets();
+        }
+
+        private void SaveSerializedGradientXData()
+        {
+            if (_gradients == null || _gradients.Count == 0 || _targetObject == null) return;
+
+            SerializedObject serializedObject = new SerializedObject(_targetObject);
+            SerializedProperty property = serializedObject.FindProperty(_targetPropertyPath);
+            if (property == null) return;
+
+            Undo.RecordObject(_targetObject, "Edit GradientX");
+            WriteGradientXData(property, _gradients[0]);
+            serializedObject.ApplyModifiedProperties();
+            EditorUtility.SetDirty(_targetObject);
+        }
+
+        private static void WriteGradientXData(SerializedProperty property, GradientXElement gradient)
+        {
+            property.FindPropertyRelative("interpolationColorSpace").enumValueIndex = (int)gradient.ColorSpaceType;
+            property.FindPropertyRelative("gradientType").enumValueIndex = (int)gradient.GradientType;
+
+            SerializedProperty colorKeys = property.FindPropertyRelative("colorKeys");
+            colorKeys.arraySize = gradient.ColorKeys.keys.Count;
+            for (int i = 0; i < gradient.ColorKeys.keys.Count; i++)
+            {
+                SerializedProperty key = colorKeys.GetArrayElementAtIndex(i);
+                ColorKey colorKey = gradient.ColorKeys.keys[i].KeyValue;
+                key.FindPropertyRelative("time").floatValue = colorKey.Time();
+                key.FindPropertyRelative("color").colorValue = colorKey.Color();
+                key.FindPropertyRelative("brightness").floatValue = colorKey.Brightness();
+            }
+
+            SerializedProperty alphaKeys = property.FindPropertyRelative("alphaKeys");
+            alphaKeys.arraySize = gradient.AlphaKeys.keys.Count;
+            for (int i = 0; i < gradient.AlphaKeys.keys.Count; i++)
+            {
+                SerializedProperty key = alphaKeys.GetArrayElementAtIndex(i);
+                AlphaKey alphaKey = gradient.AlphaKeys.keys[i].KeyValue;
+                key.FindPropertyRelative("time").floatValue = alphaKey.Time();
+                key.FindPropertyRelative("alpha").floatValue = alphaKey.Alpha();
+            }
         }
 
         private GradientXDataScriptable LoadGradientXDataScriptable()
@@ -355,6 +495,7 @@ namespace XO.ColorHarmony
 
         private void OnClickAddGradient()
         {
+            if (_targetObject != null) return;
             if (_gradients.Count >= 3) return;
             _gradients.Add(new GradientXElement(this));
             _root.Q("GradientContainer").Add(_gradients[^1]);
@@ -363,6 +504,7 @@ namespace XO.ColorHarmony
 
         private void OnClickRemoveGradient()
         {
+            if (_targetObject != null) return;
             if (_gradients.Count <= 1) return;
             _root.Q("GradientContainer").Remove(_gradients[^1]);
             _gradients.RemoveAt(_gradients.Count - 1);
