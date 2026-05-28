@@ -7,19 +7,19 @@ const real LINEAR_TO_SRGB_ALPHA = 0.055;
 
 real3 linear_to_srgb(real3 In, out real3 Out) {
     if(In.r <= 0.0031308)
-        Out.r = 12.92 * In;
+        Out.r = 12.92 * In.r;
     else
-        Out.r = (1.0 + LINEAR_TO_SRGB_ALPHA) * pow(In, 1.0/2.4) - LINEAR_TO_SRGB_ALPHA;
+        Out.r = (1.0 + LINEAR_TO_SRGB_ALPHA) * pow(In.r, 1.0/2.4) - LINEAR_TO_SRGB_ALPHA;
 
     if(In.g <= 0.0031308)
-        Out.g = 12.92 * In;
+        Out.g = 12.92 * In.g;
     else
-        Out.g = (1.0 + LINEAR_TO_SRGB_ALPHA) * pow(In, 1.0/2.4) - LINEAR_TO_SRGB_ALPHA;
+        Out.g = (1.0 + LINEAR_TO_SRGB_ALPHA) * pow(In.g, 1.0/2.4) - LINEAR_TO_SRGB_ALPHA;
 
     if(In.b <= 0.0031308)
-        Out.b = 12.92 * In;
+        Out.b = 12.92 * In.b;
     else
-        Out.b = (1.0 + LINEAR_TO_SRGB_ALPHA) * pow(In, 1.0/2.4) - LINEAR_TO_SRGB_ALPHA;
+        Out.b = (1.0 + LINEAR_TO_SRGB_ALPHA) * pow(In.b, 1.0/2.4) - LINEAR_TO_SRGB_ALPHA;
 
     return Out;
 }

@@ -5,6 +5,10 @@
 
 real3 xyy_to_xyz(real3 In, out real3 Out) {
     real Y = In.z;
+    if (abs(In.y) <= REAL_EPS)
+    {
+        return Out = real3(0.0, 0.0, 0.0);
+    }
     real x = Y * In.x / In.y;
     real z = Y * (1.0 - In.x - In.y) / In.y;
     return Out = real3(x, Y, z);

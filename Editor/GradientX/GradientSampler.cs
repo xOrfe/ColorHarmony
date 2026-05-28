@@ -128,70 +128,11 @@ namespace XO.ColorHarmony
         public static Color LerpColors(float t, KeyElement<ColorKey> a, KeyElement<ColorKey> b,
             ColorSpaceType colorSpaceType)
         {
-            Color colorA = a.KeyValue.Color();
-            Color colorB = b.KeyValue.Color();
-
-            if (colorSpaceType != ColorSpaceType.OKLAB && colorSpaceType != ColorSpaceType.YCBCR)
-            {
-                Debug.LogWarning("Only OKLAB and YCBCR color spaces supported at the moment.");
-            }
-            
-            switch (colorSpaceType)
-            {
-                case ColorSpaceType.RGB:
-                    break;
-                case ColorSpaceType.HCV:
-                    break;
-                case ColorSpaceType.HCY:
-                    break;
-                case ColorSpaceType.HSL:
-                    break;
-                case ColorSpaceType.HSV:
-                    break;
-                case ColorSpaceType.OKLAB:
-                    colorA = ColorX.RgbToOklab(colorA);
-                    colorB = ColorX.RgbToOklab(colorB);
-                    break;
-                case ColorSpaceType.XYY:
-                    break;
-                case ColorSpaceType.XYZ:
-                    break;
-                case ColorSpaceType.YCBCR:
-                    colorA = ColorX.RgbToYcbcr(colorA);
-                    colorB = ColorX.RgbToYcbcr(colorB);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(colorSpaceType), colorSpaceType, null);
-            }
-
-            Color colorOut = Color.Lerp(colorA, colorB, t);
-            
-            switch (colorSpaceType)
-            {
-                case ColorSpaceType.RGB:
-                    break;
-                case ColorSpaceType.HCV:
-                    break;
-                case ColorSpaceType.HCY:
-                    break;
-                case ColorSpaceType.HSL:
-                    break;
-                case ColorSpaceType.HSV:
-                    break;
-                case ColorSpaceType.OKLAB:
-                    colorOut = ColorX.OklabToRgb(colorOut);
-                    break;
-                case ColorSpaceType.XYY:
-                    break;
-                case ColorSpaceType.XYZ:
-                    break;
-                case ColorSpaceType.YCBCR:
-                    colorOut = ColorX.YcbcrToRgb(colorOut);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(colorSpaceType), colorSpaceType, null);
-            }
-            
+            Color colorA = ColorX.FromRgb(a.KeyValue.Color(), colorSpaceType);
+            Color colorB = ColorX.FromRgb(b.KeyValue.Color(), colorSpaceType);
+            Color colorOut = Color.LerpUnclamped(colorA, colorB, t);
+            colorOut = ColorX.ToRgb(colorOut, colorSpaceType);
+            colorOut.a = Mathf.LerpUnclamped(a.KeyValue.Color().a, b.KeyValue.Color().a, t);
             return colorOut;
         }
     }
