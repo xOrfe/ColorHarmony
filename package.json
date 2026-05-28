@@ -1,6 +1,6 @@
 {
 	"name": "com.xorfe.colorharmony",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"displayName": "Color Harmony",
 	"description": "This package which is made for Unity engine contains some tools and utilities related to colors, gradients etc.",
 	"unity": "2022.3",
@@ -13,7 +13,7 @@
 	  "color"
 	],
 	"author": {
-	  "name": "Batuhan Ozan Kaplan",
+	  "name": "xOrfe",
 	  "url": "https://github.com/xorfe"
 	}
   }

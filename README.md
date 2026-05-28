@@ -10,8 +10,7 @@ Color Harmony provides tools for color space conversion, gradient editing, and c
 
 Features include:
 
-- 26 color space converters (HLSL + Shader Graph)
-- YCbCr and OKLab CPU converters (in progress)
+- 26 color space converters (HLSL + Shader Graph + C# CPU)
 - Custom Editor GUI for Shader Graph
 - Interactive Color Wheel
 - GradientX system for gradient editing
