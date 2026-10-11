@@ -1,0 +1,19 @@
+.ch-root { padding: 16px; color: rgb(218, 220, 226); background-color: rgb(35, 36, 40); flex-grow: 1; }
+.ch-root.ch-light { color: rgb(36, 38, 43); background-color: rgb(216, 217, 220); }
+.ch-row { flex-direction: row; flex-wrap: wrap; align-items: center; margin-bottom: 8px; }
+.ch-row > * { margin-right: 8px; }
+.ch-heading { font-size: 18px; -unity-font-style: bold; margin-bottom: 12px; }
+.ch-section { padding: 12px; margin-bottom: 12px; background-color: rgba(128, 128, 128, 0.09); border-radius: 6px; }
+.ch-muted { color: rgb(153, 158, 170); margin-bottom: 8px; white-space: normal; }
+.ch-light .ch-muted { color: rgb(82, 86, 96); }
+.ch-preview { height: 56px; margin-top: 4px; margin-bottom: 4px; border-radius: 3px; }
+.ch-track { height: 24px; position: relative; margin-left: 8px; margin-right: 8px; }
+.ch-key { position: absolute; width: 14px; height: 20px; border-radius: 3px; border-width: 2px; border-color: rgb(80, 84, 94); }
+.ch-key.ch-selected { border-color: rgb(111, 178, 255); border-width: 3px; }
+.ch-swatch { width: 48px; height: 40px; margin: 4px; border-radius: 5px; border-width: 2px; border-color: rgba(128, 128, 128, 0.5); }
+.ch-swatch.ch-selected { border-color: rgb(111, 178, 255); border-width: 3px; }
+.ch-inspector { min-width: 220px; flex-grow: 1; margin-top: 12px; }
+.ch-canvas { width: 300px; height: 300px; margin-right: 16px; position: relative; }
+.ch-point { width: 24px; height: 24px; border-radius: 12px; border-width: 2px; border-color: white; -unity-text-align: middle-center; color: black; -unity-font-style: bold; position: absolute; }
+.ch-point.ch-selected { border-width: 3px; border-color: rgb(111, 178, 255); }
+Button { min-height: 24px; }
