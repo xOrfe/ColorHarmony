@@ -102,6 +102,4 @@ public class GradientExample : MonoBehaviour
 
 ## Documentation
 
-- [ARCHITECTURE.md](ARCHITECTURE.md) – Internal architecture and ownership rules.
-- [VALIDATION.md](VALIDATION.md) – Validation checklists and test coverage details.
 - [LICENSE](LICENSE) – MIT License.
